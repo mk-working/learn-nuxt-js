@@ -36,8 +36,6 @@ const props = defineProps<{
   product?: TProduct
 }>()
 
-console.log("props.product", props.product)
-
 </script>
 
 <style scoped>

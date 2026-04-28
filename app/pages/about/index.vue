@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-const { data } = await useFetch("/api/ninja")
-console.log(data.value)
+const { data } = useFetch("/api/ninja?name=mario")
 </script>
 
 <style scoped></style>
