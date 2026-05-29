@@ -1,15 +1,19 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 body {
-    @apply bg-gray-50
+  @apply bg-gray-50 text-gray-900 antialiased;
 }
 
 @layer components {
-    .btn {
-        @apply bg-[#12b488] px-3 py-2 rounded-sm text-sm text-white inline-block
-    }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-emerald-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60;
+  }
 
-    .card {
-        @apply p-3 rounded-md bg-white shadow-md h-full
-    }
+  .card {
+    @apply h-full rounded-md bg-white p-4 shadow-sm ring-1 ring-gray-200;
+  }
+
+  .text-link {
+    @apply font-medium text-emerald-700 hover:text-emerald-800;
+  }
 }

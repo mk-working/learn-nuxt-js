@@ -1,25 +1,24 @@
 <template>
-  <div class="mt-7 max-w-sm mx-auto text-center card">
-    <p class="mt-7 text-7xl font-bold">{{ error.statusCode }}</p>
-    <p class="mt-7 text-6xl">Oooops.</p>
-    <p class="mt-7">{{ error.message }}</p>
-    <button class="btn my-7" @click="handleClearError">Go Home...</button>
-  </div>
+  <main class="card mx-auto mt-10 max-w-sm text-center">
+    <p class="text-6xl font-bold text-gray-950">{{ error.statusCode }}</p>
+    <h1 class="mt-4 text-2xl font-bold text-gray-950">
+      {{ error.statusMessage || 'Something went wrong' }}
+    </h1>
+    <p class="mt-3 text-gray-600">{{ error.message }}</p>
+    <button type="button" class="btn mt-6" @click="handleClearError">Go home</button>
+  </main>
 </template>
 
 <script setup lang="ts">
-import type { INuxtErrorPayload } from './types/error-type';
+import type { NuxtError } from '#app';
 
-const { error } = defineProps<{
-  error: INuxtErrorPayload
-}>()
+defineProps<{
+  error: NuxtError;
+}>();
 
 const handleClearError = () => {
   clearError({
-    redirect: "/"
-  })
-}
-
+    redirect: '/'
+  });
+};
 </script>
-
-<style scoped></style>

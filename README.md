@@ -1,75 +1,47 @@
-# Nuxt Minimal Starter
+# Nuxt Dojo
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A small Nuxt learning project that demonstrates pages, layouts, components, typed data fetching, Tailwind styling, and Nitro server API routes.
 
 ## Setup
 
-Make sure to install dependencies:
+Install dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Copy the optional environment template if you want to experiment with private runtime config:
 
 ```bash
-# npm
+cp .env.example .env
+```
+
+## Development
+
+Start the Nuxt dev server:
+
+```bash
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The app usually runs at `http://localhost:3000`. If another local process already owns that port, Nuxt may choose another one.
 
-Build the application for production:
+## Quality Checks
+
+Run these before committing changes:
 
 ```bash
-# npm
+npm run format:check
+npm run typecheck
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm audit
 ```
 
-Locally preview production build:
+Use `npm run format` to apply Prettier formatting.
 
-```bash
-# npm
-npm run preview
+## Project Notes
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- App pages and components live in `app/`.
+- Server API routes live in `server/api/`.
+- Product pages call local `/api/products` routes instead of fetching third-party data directly from page components.
+- `server/utils/products.ts` tries the Fake Store API first and falls back to local sample products so the app still works offline.

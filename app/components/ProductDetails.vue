@@ -1,45 +1,41 @@
 <template>
-  <div>
+  <article class="card">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <div class="flex min-h-80 items-center justify-center rounded-md bg-gray-50 p-6">
+        <img
+          :src="product.image"
+          :alt="product.title"
+          class="max-h-96 w-full max-w-sm object-contain"
+        />
+      </div>
 
-    <div v-if="product">
-      <div class="card">
-        <div class="grid grid-cols-2 gap-10">
-          <div class="p-7">
-            <img :src="product.image" :alt="product.title" class="mx-auto my-7">
-          </div>
-          <div class="p-7">
-            <h2 class="text-4xl my-7">{{ product.title }}</h2>
-            <p class="text-xl my-7">Price - ${{ product.price }}</p>
-            <h3 class="font-bold border-b-2 mb-4 pb-2">Product description:</h3>
-            <p class="mb-7">{{ product.description }}</p>
+      <div class="space-y-5">
+        <p class="text-sm font-medium text-emerald-700">{{ product.category }}</p>
+        <h1 class="text-3xl font-bold text-gray-950">{{ product.title }}</h1>
+        <p class="text-2xl font-bold text-emerald-700">${{ product.price.toFixed(2) }}</p>
 
-            <button class="btn flex">
-              <i class="material-icons mr-2">add_shopping_cart</i>
-              <span>Add to cart</span>
-            </button>
-          </div>
+        <div>
+          <h2 class="border-b pb-2 font-semibold text-gray-950">Product description</h2>
+          <p class="mt-3 text-gray-600">{{ product.description }}</p>
         </div>
+
+        <p class="text-sm text-gray-500">
+          Rating: {{ product.rating.rate }} / 5 from {{ product.rating.count }} reviews
+        </p>
+
+        <button type="button" class="btn">
+          <i class="material-icons text-base" aria-hidden="true">add_shopping_cart</i>
+          <span>Add to cart</span>
+        </button>
       </div>
     </div>
-
-    <!-- LOADING -->
-    <div v-else>
-      Loading product details...
-    </div>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
-import type { TProduct } from '~/types/products-type';
+import type { Product } from '~/types/products-type';
 
-const props = defineProps<{
-  product?: TProduct
-}>()
-
+defineProps<{
+  product: Product;
+}>();
 </script>
-
-<style scoped>
-img {
-  max-width: 400px;
-}
-</style>
