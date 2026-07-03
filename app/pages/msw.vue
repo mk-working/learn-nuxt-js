@@ -216,7 +216,6 @@ const logs = ref<
 
 function addLog(method: string, url: string, status: string, color: string) {
   const time = new Date().toLocaleTimeString();
-  console.log("helloworlds");
   logs.value.unshift({ time, method, url, status, color });
   if (logs.value.length > 8) logs.value.pop();
 }
